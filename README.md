@@ -1,2 +1,5 @@
 # ecg1
-ECG#1
+
+ECG System #1
+
+Hauptsensoren: Trittmatte, Taster, Bluetooth
