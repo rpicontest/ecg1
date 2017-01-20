@@ -22,6 +22,8 @@ sudo apt-get -y install python-gobject python-gobject-2 python-bluez python-dev 
 sudo apt-get -y install python-pip python3-pip
 # Python RRDtool
 sudo apt-get -y install python-rrdtool rrdtool lighttpd php5-common php5-cgi php5 php5-cli python2.7-dev python-openssl
+# Perl RRDtool
+sudo apt-get install librrds-perl
 
 # Dash Button
 sudo apt-get -y install scapy tcpdump
