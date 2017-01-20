@@ -6,6 +6,11 @@ from scapy.all import * # for sniffing for the ARP packets
 import requests # for posting to the IFTTT Maker Channel
  
 # it takes a minute for the scapy sniffing to initialize, so I print this to know when it's actually ready to go
+print('')
+print('####################################################################################################')
+print('### ACHTUNG: ipforwarding MUSS deaktiviert sein, da sonst Bestellungen ausgeloest werden koennen!!!') 
+print('### (oder ggf. Zugriff der MAC auf Internet per iptables sperren)') 
+print('####################################################################################################')
 print('Init Amazon Dash Button sniffer... done.')
  
 def button1_pressed(mac) :
