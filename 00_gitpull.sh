@@ -1,3 +1,4 @@
 #!/bin/bash
-cd ~/ecg1
+THISHOST=`hostname`
+cd ~/$THISHOST
 git pull

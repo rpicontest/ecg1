@@ -1,4 +1,7 @@
 #!/bin/bash
+THISHOST="ecg1"
+sudo hostname $THISHOST
+sudo sysctl kernel.hostname=$THISHOST
 
 # #####################################################
 # 1. Initialisierung
@@ -37,5 +40,5 @@ git pull origin
 # ####################################################
 # 3. Git
 git config --global push.default simple
-git config --global user.name "ecg1"
-git config --global user.email "ecg1@discard.email"
+git config --global user.name "$THISHOST"
+git config --global user.email "$THISHOST@discard.email"

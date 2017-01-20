@@ -1,5 +1,6 @@
 #!/bin/bash
-cd ~/ecg1
+THISHOST=`hostname`
+cd ~/$THISHOST
 git add * .
-git commit -m "auto commit"
+git commit -m "auto commit by $THISHOST"
 git push
