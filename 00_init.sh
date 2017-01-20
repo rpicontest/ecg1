@@ -33,3 +33,9 @@ git clone git://git.drogon.net/wiringPi
 cd wiringPi
 git pull origin
 ./build
+
+# ####################################################
+# 3. Git
+git config --global push.default simple
+git config --global user.name "ecg1"
+git config --global user.email "ecg1@discard.email"
