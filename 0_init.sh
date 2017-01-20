@@ -18,3 +18,16 @@ sudo apt-get -y install python-pip
 sudo apt-get -y install python3-pip
 sudo pip install beebotte
 sudo apt-get -y autoremove
+
+# #####################################################
+# 2. WiringPi installieren (für SensorPack)
+cd ~
+mkdir git
+cd git
+# Sensor-Beispiele installieren
+git clone https://github.com/sunfounder/SunFounder_SensorKit_for_RPi2.git
+# WiringPi installieren
+git clone git://git.drogon.net/wiringPi
+cd wiringPi
+git pull origin
+./build
