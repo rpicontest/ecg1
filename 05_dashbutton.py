@@ -15,9 +15,9 @@ print('Init Amazon Dash Button sniffer... done.')
  
 def button1_pressed(mac) :
   print('')
-  print('######################################################')
-  print('### Amazon Dash Button pressed (' + mac + ') ###') 
-  print('######################################################')
+  print('#########################################################')
+  print('### Amazon Dash Button #1 pressed (' + mac + ') ###') 
+  print('#########################################################')
 
 def arp_display(pkt):
   mac_actions = { 'ac:63:be:c6:28:af' : button1_pressed }
