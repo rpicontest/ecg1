@@ -13,10 +13,12 @@ sudo apt-get -y install git-core
 sudo apt-get -y install bluetooth bluez
 # Python
 sudo apt-get -y install python-gobject python-gobject-2 python-bluez python-dev python-rpi.gpio python-requests
+# Python Installer
+sudo apt-get -y install python-pip python3-pip
+# Dash Button
+sudo apt-get -y install scapy tcpdump
 
-sudo apt-get -y install python-pip
-sudo apt-get -y install python3-pip
-sudo pip install beebotte
+# Abschluss
 sudo apt-get -y autoremove
 
 # #####################################################
