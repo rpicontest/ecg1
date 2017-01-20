@@ -12,6 +12,8 @@ sudo apt-get -y autoremove
 sudo apt-get -y install mc
 sudo apt-get -y install htop
 sudo apt-get -y install git-core
+sudo apt-get -y install iftop
+
 # Bluetooth
 sudo apt-get -y install bluetooth bluez
 # Python
