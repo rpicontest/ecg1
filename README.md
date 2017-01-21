@@ -10,8 +10,14 @@ Hauptsensoren:
 
 Dokumentation:
 =======================
+Sensoren:
 - https://www.sunfounder.com/learn/category/Sensor-Kit-v1-0-for-Raspberry-Pi.html
 
+Schaltpläne, Belegungspläne:
+- https://www.bitblokes.de/wp-content/uploads/2016/01/raspberry_pi_gpio-shutdown-pins.png
+
+Tipps:
+- 
 
 Anleitung:
 =======================
