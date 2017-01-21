@@ -17,7 +17,7 @@ sudo apt-get -y install iftop
 # Bluetooth
 sudo apt-get -y install bluetooth bluez
 # Python
-sudo apt-get -y install python-gobject python-gobject-2 python-bluez python-dev python-rpi.gpio python-requests
+sudo apt-get -y install python-gobject python-gobject-2 python-bluez python-dev python-rpi.gpio python-requests python-smbus i2c-tools
 # Python Installer
 sudo apt-get -y install python-pip python3-pip
 # Python RRDtool
