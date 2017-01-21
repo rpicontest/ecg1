@@ -17,7 +17,7 @@ Schaltpläne, Belegungspläne:
 - https://www.bitblokes.de/wp-content/uploads/2016/01/raspberry_pi_gpio-shutdown-pins.png
 
 Tipps:
-- 
+- (...)
 
 Anleitung:
 =======================
