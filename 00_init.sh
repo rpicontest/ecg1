@@ -28,6 +28,9 @@ sudo apt-get install librrds-perl
 # Dash Button
 sudo apt-get -y install scapy tcpdump
 
+# Tools Systemmonitoring
+sudo apt-get -y install ifstat
+
 # Abschluss
 sudo apt-get -y autoremove
 
