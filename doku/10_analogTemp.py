@@ -9,6 +9,7 @@ def init():
 def loop():
 	while True:
 		analogVal = ADC0832.getResult()
+#		print 'temp analog= %d C' % analogVal
 		Vr = 5 * float(analogVal) / 255
 		Rt = 10000 * Vr / (5 - Vr)
 		temp = 1/(((math.log(Rt / 10000)) / 3950) + (1 / (273.15+25)))
