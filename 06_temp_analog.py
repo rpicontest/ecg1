@@ -1,7 +1,9 @@
 #!/usr/bin/env python
+
 import ADC0832
 import time
 import math
+import ssl
 
 def init():
 	ADC0832.setup()
@@ -37,7 +39,32 @@ def loop():
 		temp = 1/(((math.log(Rt / 10000)) / 3950) + (1 / (273.15+25)))
 		temp = temp - 273.15
 		print 'Temperatur = %d C' % temp
-		time.sleep(0.5)
+
+
+#	        URL=`cat /home/pi/circona/ecg1_sensors_url.txt`
+
+#        	curl -X PUT --insecure "$URL" --data '{
+#        	    "ECG1.temperature": "'$temp'"
+#	          }'
+
+		context = ssl._create_unverified_context()
+
+		url = open('/home/pi/circonus/ecg1_sensors_url.txt', 'r').read()
+		print 'URL=%s' % url
+
+		import json
+		import urllib2
+
+		data = {
+        		'ECG1.temperature': temp
+		}
+
+		req = urllib2.Request(url)
+		req.add_header('Content-Type', 'application/json')
+
+		response = urllib2.urlopen(req, json.dumps(data), context=context)
+
+		time.sleep(30)
 
 if __name__ == '__main__':
 	init()
