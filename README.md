@@ -1,10 +1,20 @@
 # ecg1
 
-ECG System #1
+## ECG System #1
 
-Hauptsensoren: Trittmatte, Taster, Bluetooth
+Hauptsensoren: 
+=======================
+- Trittmatte
+- Taster
+- Bluetooth
+
+Dokumentation:
+=======================
+- https://www.sunfounder.com/learn/category/Sensor-Kit-v1-0-for-Raspberry-Pi.html
 
 
+Anleitung:
+=======================
 1. Skript 0_init.sh ausführen
 
 2. Konfiguration des Systems
