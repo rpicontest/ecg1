@@ -5,16 +5,16 @@ import time
 
 BtnPin = 18
 Rpin   = 11
-Gpin   = 12
-Bpin   = 13
+Gpin   = 13
+Bpin   = 15
 
 bt = ['CC:20:E8:64:0A:7F', '34:4D:AA:AD:7F:C0']
 
 print "DEMO: Bluetooth & Button press"
 print ""
 print "GPIO 17 (Pin 11)  -> LED R"
-print "GPIO 18 (Pin 12)  -> LED G"
-print "GPIO 27 (Pin 13)  -> LED B"
+print "GPIO 27 (Pin 13)  -> LED G"
+print "GPIO 22 (Pin 15)  -> LED B"
 print "GRND    (Pin 6 )  -> LED -"
 print ""
 print "GRND     (Pin 14) -> Button -"
