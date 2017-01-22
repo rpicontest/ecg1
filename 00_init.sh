@@ -31,6 +31,11 @@ sudo apt-get -y install scapy tcpdump
 # Tools Systemmonitoring
 sudo apt-get -y install ifstat
 
+
+# Python Module
+sudo pip dhcp_networking
+
+
 # Abschluss
 sudo apt-get -y autoremove
 
