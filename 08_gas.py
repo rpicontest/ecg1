@@ -42,32 +42,26 @@ def loop():
 		t = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 		print '%s Gas Level = %.2f SnO2 (Wartezeit: %ss)' % (t, gas, varWaitTime)
 
+#		try:
+		context = ssl._create_unverified_context()
 
-#	        URL=`cat /home/pi/circona/ecg1_sensors_url.txt`
-
-#        	curl -X PUT --insecure "$URL" --data '{
-#        	    "ECG1.temperature": "'$temp'"
-#	          }'
-
-		try:
-			context = ssl._create_unverified_context()
-
-			url = open('/home/pi/circonus/ecg1_sensors_url.txt', 'r').read()
+		url = open('/home/pi/circonus/ecg1_sensors_url.txt', 'r').read()
 #			print 'URL=%s' % url
 
-			import json
-			import urllib2
+		import json
+		import urllib2
 
-			data = {
-       		 		'ECG1.SnO2_gas': temp
-			}
+		data = {
+      	 		'ECG1.SnO2_gas': gas
+		}
 
-			req = urllib2.Request(url)
-			req.add_header('Content-Type', 'application/json')
+		req = urllib2.Request(url)
+		req.add_header('Content-Type', 'application/json')
 
-			response = urllib2.urlopen(req, json.dumps(data), context=context)
-		except:
-			pass
+		response = urllib2.urlopen(req, json.dumps(data), context=context)
+#		except:
+#			pass
+
 		time.sleep(varWaitTime)
 
 if __name__ == '__main__':
