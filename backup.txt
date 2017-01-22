@@ -2,4 +2,7 @@
 /etc/sysctl.conf
 /etc/hosts
 /etc/dnsmasq
-
+/etc/network/interfaces
+/etc/hostapd/hostapd.conf
+/etc/default/isc-dhcp-server
+/etc/sysctl.conf
