@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import logging # for the following line
 import os
 import rrdtool
