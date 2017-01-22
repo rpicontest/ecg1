@@ -50,7 +50,8 @@ def button1_pressed(mac) :
      req.add_header('Content-Type', 'application/json')
 
      response = urllib2.urlopen(req, json.dumps(data), context=context)
-
+		 except:
+			  pass
 
 def arp_display(pkt):
   mac_actions = { 'ac:63:be:c6:28:af' : button1_pressed }
