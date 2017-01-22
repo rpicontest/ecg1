@@ -26,32 +26,25 @@ def button1_pressed(mac) :
   print('### Amazon Dash Button #1 pressed (' + mac + ') ###') 
   print('#########################################################')
 
-#  # insert data into round-robin-database
-#  data = "N:1"
-#  #rrdtool.create('/home/pi/ecg1/05_dashbutton.rrd','DS:dashbutton:GAUGE:30:0:U') 
-#  rrdtool.update(
-#	"%s/05_dashbutton.rrd" % (os.path.dirname(os.path.abspath(__file__))),
-#	data) 
+  try:
+     	context = ssl._create_unverified_context()
 
-   try:
-     context = ssl._create_unverified_context()
+     	url = open('/home/pi/circonus/ecg1_sensors_url.txt', 'r').read()
+#    	print 'URL=%s' % url
 
-     url = open('/home/pi/circonus/ecg1_sensors_url.txt', 'r').read()
-#    print 'URL=%s' % url
+     	import json
+     	import urllib2
 
-     import json
-     import urllib2
-
-     data = {
+     	data = {
              'ECG1.temperature': temp
-     }
+     	}
 
-     req = urllib2.Request(url)
-     req.add_header('Content-Type', 'application/json')
+     	req = urllib2.Request(url)
+	req.add_header('Content-Type', 'application/json')
 
-     response = urllib2.urlopen(req, json.dumps(data), context=context)
-		 except:
-			  pass
+  	response = urllib2.urlopen(req, json.dumps(data), context=context)
+  except:
+	pass
 
 def arp_display(pkt):
   mac_actions = { 'ac:63:be:c6:28:af' : button1_pressed }
@@ -67,4 +60,4 @@ def arp_display(pkt):
       else:
         print("ARP Probe from unknown device: " + pkt[ARP].hwsrc)
  
-print(sniff(prn=arp_display, filter="arp", store=0))
+print(sniff(iface="wlan1", prn=arp_display, filter="arp", store=0))

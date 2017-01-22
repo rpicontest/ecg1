@@ -1,2 +1,5 @@
 /etc/hostapd/hostapd.conf
 /etc/sysctl.conf
+/etc/hosts
+/etc/dnsmasq
+
