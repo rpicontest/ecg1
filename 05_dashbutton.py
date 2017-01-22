@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+# Tip: https://bob.igo.name/wp-content/uploads/2015/10/AmazonDash.pdf
+# Tip: http://hypfer.de/blog/2016/09/02/amazon-dash-button-zweckentfremden-ohne-arp-1n/
+
+
 import logging # for the following line
 import os
 import rrdtool
