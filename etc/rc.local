@@ -25,7 +25,7 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 
 # Sensor-Erfassung
-/home/pi/ecg1/06_temperature.py
-/home/pi/ecg1/07_system.sh
+/home/pi/ecg1/06_temp_analog.py &
+/home/pi/ecg1/07_system.sh &
 
 exit 0
