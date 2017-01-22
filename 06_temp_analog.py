@@ -4,11 +4,16 @@ import ADC0832
 import time
 import math
 import ssl
+import time
+from datetime import datetime
+
+varWaitTime=10
+
 
 def init():
 	ADC0832.setup()
 	print("")
-	print("Analoge Temperatur")
+	print("Analog Temperatur")
 	print("")
 	print("ADC")
 	print("ADC		   RPI")
@@ -38,7 +43,10 @@ def loop():
 		Rt = 10000 * Vr / (5 - Vr)
 		temp = 1/(((math.log(Rt / 10000)) / 3950) + (1 / (273.15+25)))
 		temp = temp - 273.15
-		print 'Temperatur = %d C' % temp
+		temp = float("{0:.2f}".format(temp))
+
+		t = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+		print '%s Temperatur = %.2f C (Wartezeit: %ss)' % (t, temp, varWaitTime)
 
 
 #	        URL=`cat /home/pi/circona/ecg1_sensors_url.txt`
@@ -51,7 +59,7 @@ def loop():
 			context = ssl._create_unverified_context()
 
 			url = open('/home/pi/circonus/ecg1_sensors_url.txt', 'r').read()
-			print 'URL=%s' % url
+#			print 'URL=%s' % url
 
 			import json
 			import urllib2
@@ -66,10 +74,11 @@ def loop():
 			response = urllib2.urlopen(req, json.dumps(data), context=context)
 		except:
 			pass
-		time.sleep(30)
+		time.sleep(varWaitTime)
 
 if __name__ == '__main__':
 	init()
+
 	try:
 		loop()
 	except KeyboardInterrupt: 

@@ -21,12 +21,30 @@ def button1_pressed(mac) :
   print('### Amazon Dash Button #1 pressed (' + mac + ') ###') 
   print('#########################################################')
 
-  # insert data into round-robin-database
-  data = "N:1"
-  #rrdtool.create('/home/pi/ecg1/05_dashbutton.rrd','DS:dashbutton:GAUGE:30:0:U') 
-  rrdtool.update(
-	"%s/05_dashbutton.rrd" % (os.path.dirname(os.path.abspath(__file__))),
-	data) 
+#  # insert data into round-robin-database
+#  data = "N:1"
+#  #rrdtool.create('/home/pi/ecg1/05_dashbutton.rrd','DS:dashbutton:GAUGE:30:0:U') 
+#  rrdtool.update(
+#	"%s/05_dashbutton.rrd" % (os.path.dirname(os.path.abspath(__file__))),
+#	data) 
+
+   try:
+                        context = ssl._create_unverified_context()
+
+                        url = open('/home/pi/circonus/ecg1_sensors_url.txt', 'r').read()
+#                       print 'URL=%s' % url
+
+                        import json
+                        import urllib2
+
+                        data = {
+                                'ECG1.temperature': temp
+                        }
+
+                        req = urllib2.Request(url)
+                        req.add_header('Content-Type', 'application/json')
+
+                        response = urllib2.urlopen(req, json.dumps(data), context=context)
 
 
 
