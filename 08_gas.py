@@ -6,33 +6,41 @@ import math
 import ssl
 import time
 from datetime import datetime
+import sys
 
 varWaitTime=30
 
+ARG_DISPLAY=0
+for arg in sys.argv:
+	if arg == "-display":
+		ARG_DISPLAY=1
+
+
 def init():
 	ADC0832.setup()
-	print("")
-	print("Analog Temperatur")
-	print("")
-	print("ADC")
-	print("ADC		   RPI")
-	print("---------------------------------------")
-	print("Pin 1		-> Pin 11 (GPIO 17)")
-	print("Pin 2		-> (+++Sensor+++)")
-	print("Pin 3		-> (+++ ohne +++)")
-	print("Pin 4		-> Pin 9  (GND)")
-	print("Pin 5 (DI)	-> Pin 13 (GPIO 27)")
-	print("Pin 6 (DO)	-> Pin 13 (GPIO 27)")
-	print("Pin 7 (CLK)	-> Pin 12 (GPIO 18)")
-	print("Pin 8 (VCC)	-> Pin 1  (3.3V)")
-	print("")
-	print("Sensor (beliebiger analoger Sensor")
-	print("Sensor")
-	print("---------------------------------------")
-	print("Pin -		-> Pin 9  (GND)")
-	print("Pin +		-> Pin 1  (3.3V)")
-	print("Pin S		-> (+++Pin 2 ADC+++)")
-	print("")
+	if ARG_DISPLAY == 1:
+		print("")
+		print("Analog Temperatur")
+		print("")
+		print("ADC")
+		print("ADC		   RPI")
+		print("---------------------------------------")
+		print("Pin 1		-> Pin 11 (GPIO 17)")
+		print("Pin 2		-> (+++Sensor+++)")
+		print("Pin 3		-> (+++ ohne +++)")
+		print("Pin 4		-> Pin 9  (GND)")
+		print("Pin 5 (DI)	-> Pin 13 (GPIO 27)")
+		print("Pin 6 (DO)	-> Pin 13 (GPIO 27)")
+		print("Pin 7 (CLK)	-> Pin 12 (GPIO 18)")
+		print("Pin 8 (VCC)	-> Pin 1  (3.3V)")
+		print("")
+		print("Sensor (beliebiger analoger Sensor")
+		print("Sensor")
+		print("---------------------------------------")
+		print("Pin -		-> Pin 9  (GND)")
+		print("Pin +		-> Pin 1  (3.3V)")
+		print("Pin S		-> (+++Pin 2 ADC+++)")
+		print("")
 
 def loop():
 	while True:
@@ -40,7 +48,8 @@ def loop():
 		gas = float("{0:.2f}".format(gas))
 
 		t = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-		print '%s Gas Level = %.2f SnO2 (Wartezeit: %ss)' % (t, gas, varWaitTime)
+		if ARG_DISPLAY == 1:
+			print '%s Gas Level = %.2f SnO2 (Wartezeit: %ss)' % (t, gas, varWaitTime)
 
 #		try:
 		context = ssl._create_unverified_context()
@@ -71,4 +80,5 @@ if __name__ == '__main__':
 		loop()
 	except KeyboardInterrupt: 
 		ADC0832.destroy()
-		print 'The end !'
+		if ARG_DISPLAY == 1:
+			print 'Done.'

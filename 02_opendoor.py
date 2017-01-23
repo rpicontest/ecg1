@@ -1,7 +1,9 @@
 #!/usr/bin/env python
+
 import RPi.GPIO as GPIO
 import bluetooth
 import time
+import sys
 
 BtnPin = 18
 Rpin   = 11
@@ -10,18 +12,26 @@ Bpin   = 15
 
 bt = ['CC:20:E8:64:0A:7F', '34:4D:AA:AD:7F:C0']
 
-print "DEMO: Bluetooth & Button press"
-print ""
-print "GPIO 17 (Pin 11)  -> LED R"
-print "GPIO 27 (Pin 13)  -> LED G"
-print "GPIO 22 (Pin 15)  -> LED B"
-print "GRND    (Pin 6 )  -> LED -"
-print ""
-print "GRND     (Pin 14) -> Button -"
-print "GPIO 3.3V(Pin 17) -> Button 5V"
-print "GPIO 24  (Pin 18) -> Button S"
-print ""
-print "Ausgabe:"
+
+ARG_DISPLAY=0
+for arg in sys.argv:
+        if arg == "-display":
+                ARG_DISPLAY=1
+
+
+if ARG_DISPLAY == 1:
+	print "DEMO: Bluetooth & Button press"
+	print ""
+	print "GPIO 17 (Pin 11)  -> LED R"
+	print "GPIO 27 (Pin 13)  -> LED G"
+	print "GPIO 22 (Pin 15)  -> LED B"
+	print "GRND    (Pin 6 )  -> LED -"
+	print ""
+	print "GRND     (Pin 14) -> Button -"
+	print "GPIO 3.3V(Pin 17) -> Button 5V"
+	print "GPIO 24  (Pin 18) -> Button S"
+	print ""
+	print "Ausgabe:"
 
 
 def setup():
@@ -48,9 +58,10 @@ def Led(status):
 
 def Print(x):
         if x == 0:
-                print '    ***********************'
-                print '    *   Tuer geoeffnet!   *'
-                print '    ***********************'
+		if ARG_DISPLAY == 1:
+	                print '    ***********************'
+       		        print '    *   Tuer geoeffnet!   *'
+       	       	 	print '    ***********************'
 
 #def detect(chn):
 #        Led(GPIO.input(BtnPin))
@@ -78,13 +89,16 @@ try:
         result = bluetooth.lookup_name(bt[i], timeout=3)
         if (result != None):
           Led(1)
-          print "Status 1: MAC ",bt[i]," wurde gefunden. Taster freigegeben (LED=blau)"
+          if ARG_DISPLAY == 1:
+		print "Status 1: MAC ",bt[i]," wurde gefunden. Taster freigegeben (LED=blau)"
           if not (GPIO.input (BtnPin)):
             Led(2)
-            print "Status 2: MAC wurde gefunden & Taster wurde betaetigt (LED=gruen)"
+            if ARG_DISPLAY == 1:
+		print "Status 2: MAC wurde gefunden & Taster wurde betaetigt (LED=gruen)"
             time.sleep (2)
         else:
-          print "Status: 0 (MAC ",bt[i]," wurde nicht gefunden (LED=rot)"
+          if ARG_DISPLAY == 1:
+		print "Status: 0 (MAC ",bt[i]," wurde nicht gefunden (LED=rot)"
           doublecheck = 1
 except KeyboardInterrupt:
   destroy()
