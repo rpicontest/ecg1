@@ -3,6 +3,13 @@ import RPi.GPIO as GPIO
 import time
 import requests
 import sys
+import logging # for the following line
+import os
+import math
+import ssl
+from datetime import datetime
+
+
 
 BtnPin = 22
 PROBE_TIMER = 60 # Anzahl Sekunden, die ein Standwaert gesendet werden soll
@@ -43,6 +50,28 @@ def Print(x):
 def Status(sensordata):
 	if ARG_DISPLAY == 1:
 		print "Status=",sensordata
+
+  		try:
+        		context = ssl._create_unverified_context()
+
+        		url = open('/home/pi/circonus/ecg1_sensors_url.txt', 'r').read()
+#       		print 'URL=%s' % url
+
+        		import json
+        		import urllib2
+
+        		data = {
+             			'ECG1.pressuremat': 1
+        		}
+
+        		req = urllib2.Request(url)
+        		req.add_header('Content-Type', 'application/json')
+
+        		response = urllib2.urlopen(req, json.dumps(data), context=context)
+  		except:
+        		pass
+
+
 
 def detect(chn):
         Print(GPIO.input(BtnPin))

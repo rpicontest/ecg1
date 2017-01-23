@@ -35,11 +35,11 @@ if ARG_DISPLAY == 1:
 	print('Init Amazon Dash Button sniffer... done.')
  
 def button1_pressed(mac) :
-	if ARG_DISPLAY == 1:
-		print('')
-		print('#########################################################')
-		print('### Amazon Dash Button #1 pressed (' + mac + ') ###') 
-		print('#########################################################')
+  if ARG_DISPLAY == 1:
+	print('')
+	print('#########################################################')
+	print('### Amazon Dash Button #1 pressed (' + mac + ') ###') 
+	print('#########################################################')
 
   try:
      	context = ssl._create_unverified_context()
@@ -51,7 +51,7 @@ def button1_pressed(mac) :
      	import urllib2
 
      	data = {
-             'ECG1.temperature': temp
+             'ECG1.dashbutton': 1
      	}
 
      	req = urllib2.Request(url)

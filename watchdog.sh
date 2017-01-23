@@ -16,7 +16,7 @@ while read WATCHDOG_PROCESS; do
 		if [[ $WATCHDOG_PROCESS == -* ]]; then
 			WATCHDOG_KILL=`echo -n "$WATCHDOG_PROCESS" | tail -c +2 | sed -e 's/^[[:space:]]*//'`
 			echo -n "Beende Prozess '$WATCHDOG_KILL'..."
-			pkill -f $WATCHDOG_KILL
+			sudo pkill -f $WATCHDOG_KILL
 			echo "OK"
 		else
 			if [[ !  -z  $WATCHDOG_PROCESS  ]]; then
