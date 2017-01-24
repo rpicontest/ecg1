@@ -7,6 +7,9 @@ echo "Watchdog"
 echo "================================="
 echo "To install, edit 'sudo nano /etc/crontab' and add '* * * * * root $THISSCRIPT'"
 echo ""
+echo "Arguments:"
+echo "$THISSCRIPT <-file:listfile> <-display>"
+echo ""
 
 
 while read WATCHDOG_PROCESS; do    
